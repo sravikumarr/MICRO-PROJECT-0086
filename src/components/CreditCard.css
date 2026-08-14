@@ -1,0 +1,296 @@
+.cards-wrapper {
+  position: relative;
+  width: 540px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  width: 447px;
+  height: 245px;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  user-select: none;
+}
+
+/* ================= FRONT CARD ================= */
+.card-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: radial-gradient(circle at 10% 20%, #7857ff 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, #ef4444 0%, transparent 40%),
+              radial-gradient(circle at 50% 50%, #9333ea 0%, #43125e 100%);
+  background-color: #21092f;
+  color: #ffffff;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.card-front-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.card-circle-main {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.card-circle-sub {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+}
+
+.card-number {
+  font-size: 26px;
+  letter-spacing: 3.5px;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+  margin-top: 15px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #f7f7f9;
+  text-transform: uppercase;
+}
+
+.card-name {
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-expiry {
+  white-space: nowrap;
+}
+
+/* ================= BACK CARD ================= */
+.card-back {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #e3e4e8;
+  padding-top: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-back-stripe {
+  width: 100%;
+  height: 45px;
+  background-color: #2f2f2f;
+}
+
+.card-back-cvc-container {
+  width: 360px;
+  height: 38px;
+  margin: 18px auto 0;
+  background-color: #adb5be;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.card-back-cvc {
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.card-back-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.back-line {
+  height: 4px;
+  background-color: #c4c7cf;
+  border-radius: 2px;
+}
+
+.line-1 {
+  width: 130px;
+}
+
+.line-2 {
+  width: 70px;
+}
+
+.line-3 {
+  width: 100px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1200px) {
+  .cards-wrapper {
+    width: 480px;
+    height: 460px;
+  }
+
+  .card {
+    width: 390px;
+    height: 215px;
+  }
+
+  .card-front {
+    padding: 22px 26px;
+  }
+
+  .card-circle-main {
+    width: 38px;
+    height: 38px;
+  }
+
+  .card-circle-sub {
+    width: 16px;
+    height: 16px;
+  }
+
+  .card-number {
+    font-size: 22px;
+    letter-spacing: 3px;
+  }
+
+  .card-footer {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  .card-back-stripe {
+    height: 40px;
+  }
+
+  .card-back-cvc-container {
+    width: 310px;
+    height: 34px;
+    margin-top: 14px;
+  }
+
+  .card-back-lines {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-wrapper {
+    width: 340px;
+    height: 260px;
+    margin: 0 auto;
+  }
+
+  .card {
+    width: 285px;
+    height: 157px;
+    border-radius: 8px;
+  }
+
+  .card-front {
+    top: 90px;
+    left: 0;
+    padding: 16px 20px;
+    z-index: 3;
+  }
+
+  .card-circle-main {
+    width: 28px;
+    height: 28px;
+  }
+
+  .card-circle-sub {
+    width: 12px;
+    height: 12px;
+  }
+
+  .card-number {
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-top: 10px;
+  }
+
+  .card-footer {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  .card-back {
+    top: 15px;
+    right: 0;
+    bottom: auto;
+    padding-top: 14px;
+    z-index: 1;
+  }
+
+  .card-back-stripe {
+    height: 28px;
+  }
+
+  .card-back-cvc-container {
+    width: 230px;
+    height: 24px;
+    margin-top: 10px;
+    padding: 0 10px;
+  }
+
+  .card-back-cvc {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .card-back-lines {
+    margin-top: 10px;
+    gap: 3px;
+  }
+
+  .back-line {
+    height: 3px;
+  }
+
+  .line-1 {
+    width: 80px;
+  }
+
+  .line-2 {
+    width: 45px;
+  }
+
+  .line-3 {
+    width: 60px;
+  }
+}

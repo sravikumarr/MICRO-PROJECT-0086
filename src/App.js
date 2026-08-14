@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import CardForm from './components/CardForm';
+import CreditCard from './components/CreditCard';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -20,7 +21,6 @@ function App() {
       ...prev,
       [field]: value,
     }));
-    // Clear error for that field if it exists
     if (errors[field]) {
       setErrors((prev) => {
         const next = { ...prev };
@@ -91,7 +91,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="card-section">
-        {/* Placeholder for CreditCard component */}
+        <CreditCard formData={formData} />
       </div>
 
       <div className="form-section">

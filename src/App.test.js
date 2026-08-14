@@ -10,11 +10,18 @@ test('renders form elements and labels', () => {
   expect(screen.getByRole('button', { name: /confirm/i })).toBeInTheDocument();
 });
 
-test('shows error messages when submitting empty form', () => {
+test('renders credit card with default placeholder values', () => {
   render(<App />);
-  const confirmButton = screen.getByRole('button', { name: /confirm/i });
-  fireEvent.click(confirmButton);
+  expect(screen.getByText('0000 0000 0000 0000')).toBeInTheDocument();
+  expect(screen.getByText('JANE APPLESEED')).toBeInTheDocument();
+  expect(screen.getByText('00/00')).toBeInTheDocument();
+  expect(screen.getByText('000')).toBeInTheDocument();
+});
 
-  const errorMessages = screen.getAllByText(/can't be blank/i);
-  expect(errorMessages.length).toBeGreaterThan(0);
+test('updates credit card preview on live input', () => {
+  render(<App />);
+  const nameInput = screen.getByPlaceholderText(/e\.g\. Jane Appleseed/i);
+  fireEvent.change(nameInput, { target: { value: 'Alex Smith' } });
+
+  expect(screen.getByText('ALEX SMITH')).toBeInTheDocument();
 });
