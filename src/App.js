@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import './App.css';
 import CardForm from './components/CardForm';
 import CreditCard from './components/CreditCard';
+import SuccessState from './components/SuccessState';
+import Toast from './components/Toast';
+
+const INITIAL_FORM_DATA = {
+  cardholderName: '',
+  cardNumber: '',
+  expiryMonth: '',
+  expiryYear: '',
+  cvc: '',
+};
 
 function App() {
-  const [formData, setFormData] = useState({
-    cardholderName: '',
-    cardNumber: '',
-    expiryMonth: '',
-    expiryYear: '',
-    cvc: '',
-  });
-
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -88,19 +91,36 @@ function App() {
     }
   };
 
+  const handleReset = () => {
+    setFormData(INITIAL_FORM_DATA);
+    setErrors({});
+    setIsSubmitted(false);
+    setShowToast(false);
+  };
+
   return (
     <div className="app-container">
+      <Toast
+        message="Card details submitted successfully!"
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
+
       <div className="card-section">
         <CreditCard formData={formData} />
       </div>
 
       <div className="form-section">
-        <CardForm
-          formData={formData}
-          errors={errors}
-          onChange={handleFieldChange}
-          onSubmit={handleSubmit}
-        />
+        {!isSubmitted ? (
+          <CardForm
+            formData={formData}
+            errors={errors}
+            onChange={handleFieldChange}
+            onSubmit={handleSubmit}
+          />
+        ) : (
+          <SuccessState onReset={handleReset} />
+        )}
       </div>
     </div>
   );
